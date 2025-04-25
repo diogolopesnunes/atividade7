@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular-media</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora Simples</h1>
+        <form method="POST" action="/calcular">
+            <div class="input-group">
+                <label for="num1">Número 1:</label>
+                <input type="number" id="num1" name="num1" step="any" required>
+            </div>
+
+            <div class="input-group">
+                <label for="num2">Número 2:</label>
+                <input type="number" id="num2" name="num2" step="any" required>
+            </div>
+
+            <div class="input-group">
+                <label for="operacao">Operação:</label>
+                <select id="operacao" name="operacao" required>
+                    <option value="+">Soma (+)</option>
+                    <option value="-">Subtração (-)</option>
+                    <option value="*">Multiplicação (*)</option>
+                    <option value="/">Divisão (/)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-calcular">Calcular</button>
+        </form>
+
+        {% if erro %}
+            <div class="erro" style="display: block;">
+                {{ erro }}
+            </div>
+        {% endif %}
+
+        {% if calculado %}
+            <div class="resultado" style="display: block;">
+                <p>{{ num1 }} {{ operacao }} {{ num2 }} = <strong>{{ resultado }}</strong></p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
